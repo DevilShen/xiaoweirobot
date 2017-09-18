@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(send_Text.getWindowToken(),0);
                         Msg msg1 = new Msg();
                         msg1.setContent(responsee1.getText());
                         msg1.setTime(getTime());
@@ -111,5 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
     }
 }
